@@ -53,13 +53,39 @@ const simplifiedVersion = characters.map((elem) => ({
 //4. Get array of all first names
 // console.log(Object.value(characters)[0]);
 const firstName = characters.map((elem) => elem.name.split(" ")[0]);
-console.log(firstName);
+// console.log(firstName);
 
-//***REDUCE***
+//***REDUCE*** [accumulator of items]
 //1. Get total mass of all characters
+const totalMass = characters.reduce((acc, cur) => {
+  return acc + cur.mass;
+}, 0);
+// 0 is from the second parameters therefore we start with 0
+// console.log(totalMass);
+
 //2. Get total height of all characters
+const totalHeight = characters.reduce((acc, cur) => {
+  return acc + cur.height;
+}, 0);
+// console.log(totalHeight);
+
 //3. Get total number of characters by eye color
+const eyeColor = characters.reduce((type, count) => {
+  const color = count.eye_color;
+  if (type[color]) {
+    type[color] = type[color] + 1;
+  } else {
+    type[color] = 1;
+  }
+  return type;
+}, {});
+// console.log(eyeColor);
 //4. Get total number of characters in all the character names
+
+const charNames = characters.reduce((type, count) => {
+  return type + count.name.length;
+}, 0);
+// console.log(charNames);
 
 //***FILTER***
 //1. Get characters with mass greater than 100
@@ -86,9 +112,35 @@ const femaleCharacters = characters.filter((elem) => {
 
 //***SORT***
 //1. Sort by mass
+// compare function
+const byMass = characters.sort((elem1, elem2) => {
+  return elem1.mass - elem2.mass;
+});
+// if descending = elem2 - elem1
+// console.log(byMass);
+
 //2. Sort by height
+const byHeight = characters.sort((elem1, elem2) => {
+  return elem1.height - elem2.height;
+});
+// console.log(byHeight);
+
 //3. Sort by name
+const byName = characters.sort((elem1, elem2) => {
+  if (elem1.name < elem2.name) return -1;
+  return 1;
+});
+
+// console.log(byName);
+
 //4. Sort by gender
+const byGender = characters.sort((elem1, elem2) => {
+  if (elem1.gender === "female") return -1;
+  return 1;
+});
+
+console.log(byGender);
+// opposite will be characterss.reverse
 
 //***EVERY***
 //1. Does every character have blue eyes?
