@@ -139,17 +139,42 @@ const byGender = characters.sort((elem1, elem2) => {
   return 1;
 });
 
-console.log(byGender);
+// console.log(byGender);
 // opposite will be characterss.reverse
 
-//***EVERY***
+//***EVERY*** [if every item in the array meets that condition]
 //1. Does every character have blue eyes?
-//2. Does every character have mass more than 40?
-//3. Is every character shorter than 200?
-//4. Is every character male?
+const allBlue = characters.every((elem) => {
+  return elem.eye_color === "blue";
+});
+// console.log(allBlue);
+// answer is `false` because not all of them have blue eyes.
 
-//***SOME***
+//2. Does every character have mass more than 40?
+const massMoreThan = characters.every((elem) => elem.mass > 40);
+// console.log(massMoreThan);
+
+//3. Is every character shorter than 200?
+const shorterThan = characters.every((elem) => elem.height < 200);
+// console.log(shorterThan);
+
+//4. Is every character male?
+const allMale = characters.every((elem) => elem.gender === "male");
+// console.log(allMale);
+
+//***SOME*** [at least one item in the array]
 //1. Is there at least one male character?
+const oneMale = characters.some((elem) => elem.gender === "male");
+// console.log(oneMale);
+
 //2. Is there at least one character with blue eyes?
+const oneBlueEyes = characters.some((elem) => elem.eye_color === "blue");
+// console.log(oneBlueEyes);
+
 //3. Is there at least one character taller than 210?
+const tallerThan = characters.some((elem) => elem.height > 210);
+// console.log(tallerThan);
+
 //4. Is there at least one character that has mass less than 50?
+const massLessThan = characters.some((elem) => elem.mass < 50);
+// console.log(massLessThan);
